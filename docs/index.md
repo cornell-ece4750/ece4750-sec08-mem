@@ -7,10 +7,10 @@ ECE 4750 Section 8: Lab 3 Head Start
 
 **Table of Contents**
 
- - TinyRV2 Processor Walk-Through
- - Testing the ADD Instruction
- - Implementing and Testing the ADDI Instruction
- - Evaluating an Accumulate Function
+ - Cache Walk-Through
+ - Using the Cache Functional-Level Model
+ - Implementing and Testing Write Init Transaction
+ - More Testing
 
 This discussion section serves to introduce students to the basic cache
 modeling approach and testing strategy we will be using to implement a
@@ -143,13 +143,13 @@ then forwards those requests to main memory. Also verify that you can see
 the corresponding response coming back from main memory to the cache
 which then forwards this response back to the stream sink.
 
-Implementing and Testing the Write Transaction
+Implementing and Testing the Write Init Transaction
 --------------------------------------------------------------------------
 
 Let's try the same test on the RTL implementation of the simple cache.
 Modify `run_test` to use the `CacheSimple` like this:
 
-  run_sim( CacheSimple, cmdline_opts, duts=['cache'] )
+    run_sim( CacheSimple, cmdline_opts, duts=['cache'] )
 
 Then rerun the test. The test will not pass since we have not implemented
 the write init transaction yet.
