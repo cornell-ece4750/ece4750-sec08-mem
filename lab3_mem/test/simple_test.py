@@ -73,7 +73,7 @@ def test( cmdline_opts ):
     req( 'in', 0x0, 0x1000, 0, 0xdeadbeef ), resp( 'in',  0x0, 0,   0,  0          ),
   ]
 
-  model = TestHarness( CacheSimple(), msgs[::2], msgs[1::2] )
+  model = TestHarness( CacheFL(), msgs[::2], msgs[1::2] )
 
   run_sim( model, cmdline_opts, duts=['cache'] )
 
