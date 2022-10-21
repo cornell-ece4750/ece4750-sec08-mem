@@ -217,3 +217,15 @@ cache transitioning through the I -> TC -> IN -> W states, the tag array
 being updated in the IN state, and the write init resopnse being returned
 from the cache on cycle 7.
 
+More Testing
+--------------------------------------------------------------------------
+
+Add a second write init transaction in the given test case. Use an
+address which results in the second write init transaction writing the
+second set in the cache. Run the test and verify from the line trace that
+the tags in set 0 and set 1 are now valid.
+
+Now add a total of 16 write init transactions. Each transaction should go
+to a different set in the cache. Verify the cache is functioning as
+expected using the line trace.
+
