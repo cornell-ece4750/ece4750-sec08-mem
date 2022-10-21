@@ -99,10 +99,16 @@ module lab3_mem_CacheSimpleDpath
 
   generate
     if ( p_num_banks == 1 ) begin
-      assign cachereq_addr_byte_offset = cachereq_addr[1:0];
-      assign cachereq_addr_word_offset = cachereq_addr[3:2];
-      assign cachereq_addr_index       = cachereq_addr[7:4];
-      assign cachereq_addr_tag         = cachereq_addr[31:8];
+
+      // ''' SECTION TASK ''''''''''''''''''''''''''''''''''''''''''''''''
+      // Uncomment these lines and implement the correct address mapping
+      // '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+      // assign cachereq_addr_byte_offset = cachereq_addr[??:??];
+      // assign cachereq_addr_word_offset = cachereq_addr[??:??];
+      // assign cachereq_addr_index       = cachereq_addr[??:??];
+      // assign cachereq_addr_tag         = cachereq_addr[??:??];
+
     end
     else if ( p_num_banks == 4 ) begin
       // handle address mapping for four banks

@@ -88,20 +88,9 @@ module lab3_mem_CacheSimpleCtrl
     state_next = state_reg;
     case ( state_reg )
 
-      STATE_IDLE:
-        if ( proc2cache_reqstream_val )
-          state_next = STATE_TAG_CHECK;
-
-      STATE_TAG_CHECK:
-        if ( is_init )
-          state_next = STATE_INIT_DATA_ACCESS;
-
-      STATE_INIT_DATA_ACCESS:
-        state_next = STATE_WAIT;
-
-      STATE_WAIT:
-        if ( proc2cache_respstream_rdy )
-          state_next = STATE_IDLE;
+      // ''' SECTION TASK ''''''''''''''''''''''''''''''''''''''''''''''''
+      // Implement the state transition logic here
+      // '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
       default:
         state_next = STATE_IDLE;
@@ -177,9 +166,11 @@ module lab3_mem_CacheSimpleCtrl
       //                         req   resp  req   array array array array bit   write
       //                         rdy   val   en    wen   ren   wen   ren   in    en
       STATE_IDLE:             cs( 1,   0,    1,    0,    0,    0,    0,    0,    0     );
-      STATE_TAG_CHECK:        cs( 0,   0,    0,    0,    1,    0,    0,    0,    0     );
-      STATE_INIT_DATA_ACCESS: cs( 0,   0,    0,    1,    0,    1,    0,    1,    1     );
-      STATE_WAIT:             cs( 0,   1,    0,    0,    0,    0,    0,    0,    0     );
+
+      // ''' SECTION TASK ''''''''''''''''''''''''''''''''''''''''''''''''
+      // Implement the state output logic here
+      // '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
       default:                cs( 0,   0,    0,    0,    0,    0,    0,    0,    0     );
 
     endcase
