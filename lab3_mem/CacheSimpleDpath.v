@@ -99,16 +99,10 @@ module lab3_mem_CacheSimpleDpath
 
   generate
     if ( p_num_banks == 1 ) begin
-
-      // ''' SECTION TASK ''''''''''''''''''''''''''''''''''''''''''''''''
-      // Uncomment these lines and implement the correct address mapping
-      // '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-      // assign cachereq_addr_byte_offset = cachereq_addr[??:??];
-      // assign cachereq_addr_word_offset = cachereq_addr[??:??];
-      // assign cachereq_addr_index       = cachereq_addr[??:??];
-      // assign cachereq_addr_tag         = cachereq_addr[??:??];
-
+      assign cachereq_addr_byte_offset = cachereq_addr[1:0];
+      assign cachereq_addr_word_offset = cachereq_addr[3:2];
+      assign cachereq_addr_index       = cachereq_addr[7:4];
+      assign cachereq_addr_tag         = cachereq_addr[31:8];
     end
     else if ( p_num_banks == 4 ) begin
       // handle address mapping for four banks
@@ -125,7 +119,17 @@ module lab3_mem_CacheSimpleDpath
     .out (cachereq_data_replicated)
   );
 
-  // Tag array
+  // Write byte enable decoder
+
+  logic [15:0] wben_decoder_out;
+
+  lab3_mem_WbenDecoder wben_decoder
+  (
+    .in_ (cachereq_addr_word_offset),
+    .out (wben_decoder_out)
+  );
+
+  // Tag array (16 tags, 24 bits/tag)
 
   logic [23:0] tag_array_read_out;
 
@@ -144,16 +148,6 @@ module lab3_mem_CacheSimpleDpath
     .read_en       (tag_array_ren),
     .write_addr    (cachereq_addr_index),
     .write_data    (cachereq_addr_tag)
-  );
-
-  // Write byte enable decoder
-
-  logic [15:0] wben_decoder_out;
-
-  lab3_mem_WbenDecoder wben_decoder
-  (
-    .in_ (cachereq_addr_word_offset),
-    .out (wben_decoder_out)
   );
 
   // Data array (16 cacheslines, 128 bits/cacheline)

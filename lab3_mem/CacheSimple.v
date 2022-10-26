@@ -1,17 +1,8 @@
 //=========================================================================
 // Simple Blocking Cache
 //=========================================================================
-// Note on p_num_banks: In a multi-banked cache design, cache lines are
-// interleaved to different cache banks, so that consecutive cache lines
-// correspond to a different bank. The following is the addressing
-// structure in our four-banked data caches:
-//
-// +--------------------------+--------------+--------+--------+--------+
-// |        22b               |     4b       |   2b   |   2b   |   2b   |
-// |        tag               |   index      |bank idx| offset | subwd  |
-// +--------------------------+--------------+--------+--------+--------+
-//
-// We will compose a four-banked cache in the final multi-core lab.
+// This simple cache only supports the write init transaction. It is
+// meant as a possible starting point for lab 3.
 
 `ifndef LAB3_MEM_CACHE_SIMPLE_V
 `define LAB3_MEM_CACHE_SIMPLE_V
