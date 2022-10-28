@@ -7,7 +7,7 @@
 from pymtl3 import *
 from pymtl3.stdlib.stream      import IStreamDeqAdapterFL, OStreamEnqAdapterFL
 from pymtl3.stdlib.mem.ifcs    import MemRequesterIfc, MemResponderIfc
-from pymtl3.stdlib.mem         import mk_mem_msg, MemRequesterAdapterFL
+from pymtl3.stdlib.mem         import mk_mem_msg, MemMsgType, MemRequesterAdapterFL
 
 class CacheFL( Component ):
 
@@ -44,14 +44,32 @@ class CacheFL( Component ):
 
       if s.cache_reqstream_q.deq.rdy() and s.cache_respstream_q.enq.rdy():
 
-        # Dequeue cache request, use it to write to memory
+        # Dequeue cache request
 
         cachereq = s.cache_reqstream_q.deq()
-        s.mem_adapter.write( cachereq.addr, 4, cachereq.data )
 
-        # Create appropriate cache response, enqueue on output stream
+        # By default the read data is always zero (i.e., for writes)
 
-        cacheresp = CacheRespType( cachereq.type_, cachereq.opaque, Bits2(0), cachereq.len )
+        data = Bits32(0)
+
+        # Handle write transactions
+
+        if (    ( cachereq.type_ == MemMsgType.WRITE_INIT )
+             or ( cachereq.type_ == MemMsgType.WRITE ) ):
+          s.mem_adapter.write( cachereq.addr, 4, cachereq.data )
+
+        # Handle read transactions
+
+        elif ( cachereq.type_ == MemMsgType.READ ):
+          data = s.mem_adapter.read( cachereq.addr, 4 )
+
+        # Create appropriate cache response
+
+        cacheresp = CacheRespType( cachereq.type_, cachereq.opaque,
+                                   Bits2(0), cachereq.len, data )
+
+        # Enqueue cache response on output stream
+
         s.cache_respstream_q.enq( cacheresp )
 
   def line_trace(s):
