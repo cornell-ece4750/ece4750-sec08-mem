@@ -8,7 +8,7 @@
    sodipodi:version="0.32"
    inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
    version="1.0"
-   sodipodi:docname="lab3-mem-dpath2.svg"
+   sodipodi:docname="lab3-mem-simple-dpath.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -28,7 +28,7 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="2.7831325"
-     inkscape:cx="224.92641"
+     inkscape:cx="186.48052"
      inkscape:cy="207.5"
      inkscape:document-units="px"
      inkscape:current-layer="layer4"
@@ -43,7 +43,7 @@
      inkscape:window-width="1900"
      inkscape:window-height="1375"
      inkscape:window-x="6"
-     inkscape:window-y="31"
+     inkscape:window-y="25"
      showguides="true"
      inkscape:object-nodes="true"
      inkscape:snap-nodes="true"
@@ -2671,14 +2671,14 @@
     <text
        id="text7003"
        y="139.25441"
-       x="136.32001"
+       x="134.52344"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Palatino;-inkscape-font-specification:Palatino;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;marker:none;enable-background:accumulate"
        xml:space="preserve"><tspan
          id="tspan7001"
          y="139.25441"
-         x="136.32001"
+         x="134.52344"
          sodipodi:role="line"
-         style="font-size:8px;line-height:1.03">4b</tspan></text>
+         style="font-size:8px;line-height:1.03">16b</tspan></text>
     <path
        style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
        d="m 140,20 10,10"
